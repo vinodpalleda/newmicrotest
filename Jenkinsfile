@@ -29,7 +29,7 @@ pipeline {
 			steps {
 				
 				script {
-					dockerImage = docker.build("superapp/smsotpms_micro:${env.BUILD_TAG}")
+					dockerImage = docker.build("superapp/smsotpms:${env.BUILD_TAG}")
 				}
 
 			}
