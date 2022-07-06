@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+ 
+     <changeSet author="ravi" id="changelog-1.0">
+        <createTable tableName="user">
+            <column name="username" type="VARCHAR(15)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column> 
+            <column name="id" type="binary(40)">
+            	<constraints nullable="false"/>
+            </column>                     
+            <column name="active" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+             <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+             <column name="mobile_no" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="role">
+        	<column name="id" type="binary(40)">
+        		<constraints nullable="false"/>
+        	</column>
+        	<column name="name" type="VARCHAR(255)">
+        		<constraints primaryKey="true" nullable="false"/>
+        	</column>
+        	<column name="description" type="VARCHAR(255)">
+        		<constraints nullable="false"/>
+        	</column>
+        </createTable>
+        <createTable tableName="USER_ROLES">
+        	<column name="user_username" type="VARCHAR(255)">
+        		<constraints primaryKey="true" nullable="false"/>
+        	</column>
+        	<column name="roles_name" type="VARCHAR(255)">
+        		<constraints primaryKey="true" nullable="false"/>
+        	</column>
+        </createTable>
+        <createTable tableName="sms_otp">
+        	<column name="id" type="binary(40)">
+        		<constraints nullable="false"/>
+        	</column>
+        	<column name="moblie_no" type="VARCHAR(20)">
+        		<constraints nullable="false" primaryKey="true"/>
+        	</column>
+        	<column name="otp" type="VARCHAR(5)">
+        		<constraints nullable="true"/>
+        	</column>
+        	<column name="otp_time" type="datetime">
+        		<constraints nullable="true"/>
+        	</column>
+        </createTable>        
+    </changeSet>
+    <changeSet id="changelog-1.1" author="ravi">
+    	<modifyDataType tableName="sms_otp" columnName="otp" newDataType="VARCHAR(10)"/>
+    </changeSet>
+</databaseChangeLog>
