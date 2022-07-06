@@ -3,6 +3,7 @@ pipeline {
     environment {
 	        registryCredentials = "nexus"
                 registry = "http://192.168.94.31:8085/"
+	        image= "192.168.94.31:8085"
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
@@ -31,7 +32,7 @@ pipeline {
 			steps {
 				
 				script {
-					dockerImage = docker.build("superapp/smsotpms:${env.BUILD_TAG}")
+					dockerImage = docker.build("$192.168.94.31:8085/smsotpms:${env.BUILD_TAG}")
 				}
 
 			}
