@@ -1,6 +1,8 @@
 pipeline {
     agent any
     environment {
+	        registryCredentials = "nexus"
+                registry = "http://192.168.94.31:8081/"
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
