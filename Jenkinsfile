@@ -32,7 +32,7 @@ pipeline {
 			steps {
 				
 				script {
-					dockerImage = docker.build("$192.168.94.31:8085/smsotpms:${env.BUILD_TAG}")
+					dockerImage = docker.build("${192.168.94.31:8085}/smsotpms:${env.BUILD_TAG}")
 				}
 
 			}
