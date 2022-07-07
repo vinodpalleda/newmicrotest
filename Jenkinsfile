@@ -42,7 +42,7 @@ pipeline {
      steps{  
          script {
              docker.withRegistry( ''+registry, registryCredentials ) {
-             dockerImage.push("${env.BUILD_NUMBER}")
+             dockerImage.push("${env.BUILD_TAG}")
           }
         }
      }
