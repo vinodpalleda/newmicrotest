@@ -45,7 +45,9 @@ pipeline {
              dockerImage.push("${env.BUILD_NUMBER}")
           }
         }
-      }
+     }
+ }
+	    
  stage('Remove Unused docker image') {
                           steps{
                              sh "docker rmi $imagename:$BUILD_NUMBER"
@@ -57,4 +59,4 @@ pipeline {
 
     }
 }
-}
+
