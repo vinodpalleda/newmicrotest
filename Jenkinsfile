@@ -32,7 +32,7 @@ pipeline {
 			steps {
 				
 				script {
-					dockerImage = docker.build("${image}/smsotpms:${env.BUILD_TAG}")
+					dockerImage = docker.build("${image}/smsotpms:${env.BUILD_NUMBER}")
 				}
 
 			}
@@ -50,8 +50,7 @@ pipeline {
 stage('Remove Unused docker image') {
                           steps{
                              sh "docker rmi ${image}/smsotpms:$BUILD_NUMBER"
-                             sh "docker rmi ${image}/smsotpms:latest"
-
+                             
        }
    }
 	    
